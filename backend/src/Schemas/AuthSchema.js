@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from 'bcrypt';
 
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         unique: true,
@@ -36,16 +36,14 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Static method to encrypt a password
-UserSchema.statics.encryptPassword = async (password) => {
+userSchema.statics.encryptPassword = async (password) => {
     const salt = await bcrypt.genSalt(12);
     return await bcrypt.hash(password, salt);
 };
 
 // Static method to compare a password
-UserSchema.statics.comparePassword = async (password, receivedPassword) => {
+userSchema.statics.comparePassword = async (password, receivedPassword) => {
     return await bcrypt.compare(password, receivedPassword);
 };
 
-const User = mongoose.model('User', UserSchema);
-
-export default User;
+export default userSchema;

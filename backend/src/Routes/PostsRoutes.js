@@ -1,7 +1,7 @@
 import express from "express"
 import { uploadMulter, uploadB2 } from "../Middlewares/MulterMiddleware.js"
 import { createPost, deletePost, getAllPosts, getSinglePost, getUserPosts, imageUpdate, updatePost } from "../Controllers/PostsControllers.js"
-import verifyToken from '../Middlewares/AuthMiddleware.js'
+import { verifyToken } from "../Middlewares/AuthMiddleware.js"
 
 const router = express.Router()
 

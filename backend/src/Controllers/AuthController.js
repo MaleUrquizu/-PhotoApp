@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import User from '../Models/AuthModel.js';
 import jwt from 'jsonwebtoken';
-import config from '../../config.js';
 import { validationResult } from 'express-validator';
 
 // REGISTER
@@ -28,7 +27,7 @@ export const Register = async (req, res) => {
 
         const savedUser = await newUser.save();
 
-        const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
+        const token = jwt.sign({ id: savedUser._id }, process.env.SECRET, {
             expiresIn: 86400 // 24 hours
         });
 
@@ -52,15 +51,13 @@ export const Login = async (req, res) => {
 
     if (!matchPassword) return res.status(401).json({ token: null, message: "Incorrect email or password" })
 
-    // No roles logic needed here
-
     // Only include user ID in the token payload
     const payload = {
         id: userFound._id
     };
 
     // Sign the token with the modified payload
-    const token = jwt.sign(payload, config.SECRET, {
+    const token = jwt.sign(payload, process.env.SECRET, {
         expiresIn: 86400
     });
 
