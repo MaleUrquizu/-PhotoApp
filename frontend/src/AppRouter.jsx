@@ -16,12 +16,12 @@ const AppRouter = () => {
             <Route path="/post/upload" element={ <CreatePost /> } />
             <Route path="/post/update/:id" element={ <UpdatePost /> } />
             <Route path="/post/delete/:id" element={ <DeletePost /> } />*/}
-    <Route path="/User" element={ <User /> } />
-    
-            <Route path="/login" element={ <Login />} />
-            <Route path="/register" element={ <Register /> } />
+            <Route path="/User" element={<User />} />
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
         </Routes>
-      )
+    )
 }
 
 export default AppRouter;
