@@ -7,11 +7,11 @@ import '../Login/Login.css'
 function Login() {
 
     const [userCredentials, setUserCredentials] = useState({
-        identifier: '',
+        email: '',
         password: '',
       });
 
-  const { identifier, password } = userCredentials;
+  const { email, password } = userCredentials;
 
   const { login } = useAuth()
 
@@ -30,7 +30,7 @@ function Login() {
     e.preventDefault();
 
     try {
-        await login({ identifier, password });
+        await login({ email, password });
         console.log('Logged in!');
 
         setTimeout(function(){
@@ -48,14 +48,14 @@ function Login() {
         <h1>Login</h1>
         <div className='box-registration'>
           <form onSubmit={handleSubmit}>
-            <label htmlFor='identifier'>Email</label>
+            <label htmlFor='email'>Email</label>
             <input
               type='text'
-              name='identifier'
-              id='identifier'
+              name='email'
+              id='email'
               autoComplete='off'
               onChange={handleChange}
-              value={identifier}
+              value={email}
               required
             />
 

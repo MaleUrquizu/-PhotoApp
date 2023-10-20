@@ -23,33 +23,28 @@ function AuthProvider({ children }) {
     const navigate = useNavigate()
 
     const login = (userData) => {
-
-
-        try {
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userData),
-            };
-
-            fetch(LOGIN_URL, options)
-                .then((res) => res.json())
-                .then((data) => {
-                    setUserLogin(data)
-                    localStorage.setItem("token", data.token)
-                    console.log(data)
-                });
-
-            console.log(data)
-            localStorage.setItem("token", data.token)
-
-            console.log('Logged in!');
-        } catch {
-            console.log('Login failed.');
-        }
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        };
+    
+        fetch(LOGIN_URL, options)
+            .then((res) => res.json())
+            .then((data) => {
+                setUserLogin(data);
+                localStorage.setItem("token", data.token);
+                console.log(data);
+                console.log('Logged in!');
+                navigate('/profile'); 
+            })
+            .catch((error) => {
+                console.log('Login failed:', error);
+            });
     }
+    
 
     const register = (data) => {
 

@@ -9,9 +9,9 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token'); 
     if (token) {
-      config.headers['x-access-token'] = token;
+      config.headers['x-access-token'] = token; 
     }
     return config;
   },
@@ -19,6 +19,7 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
 
 
 /*const CREATE_POST_URL = 'upload'
@@ -35,30 +36,44 @@ export function useApi() {
 function ApiProvider({ children }) {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState()
+  const [hasLoadedData, setHasLoadedData] = useState(false); 
 
   const [posts, setPosts] = useState([]);
 
    //GETS ALL POSTS
   const getAllPosts = async () => {
+    setIsLoading(true); // Establecer isLoading en true al comenzar la solicitud
     try {
-     const response = await axios.get('http://localhost:8000/post')
-     console.log(response)
-     setData(response.data)
+      const response = await axios.get('http://localhost:8000/post');
+      console.log(response);
+      setData(response.data);
     } catch (error) {
-        console.log(error)
+      console.log(error);
+    } finally {
+      setIsLoading(false); // Establecer isLoading en false cuando se completa la solicitud
     }
-}
+  };
 
-const getUserPosts = async () => {
-  try {
-   const response = await axiosInstance.get('http://localhost:8000/post/my/profile')
-   console.log(response)
-   setData(response.data.Posts)
+  const getUserPosts = async () => {
+    if (hasLoadedData) {
+      // Si los datos ya se han cargado, no realices la solicitud nuevamente.
+      return;
+    }
 
-  } catch (error) {
-      console.log(error)
+    setIsLoading(true);
+    try {
+      const response = await axiosInstance.get('http://localhost:8000/post/myprofile');
+      console.log(response);
+      setData(response.data.Posts);
+      setHasLoadedData(true); // Marca los datos como cargados
+
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
-}
+
 
    //GESTS A POST
   const getAPost = async (userId) => {
@@ -101,7 +116,8 @@ const getUserPosts = async () => {
       console.log(updatedPost)
 
       try {
-        setData(...data, updatedPost)
+        setData(prevData => [...prevData, updatedPost])
+
         console.log(updatedPost)
 
       } catch (error) {
@@ -152,6 +168,20 @@ const imageUpdate = async (postId, updatedImage) => {
       console.error('Error deleting post:', error);
     }
   };
+  useEffect(() => {
+    // Verificar si data está definida, no está vacía y no está en proceso de carga
+    if (data && data.length === 0 && !isLoading) {
+      getAllPosts();
+    }
+  }, [data, isLoading]);
+  
+  
+  useEffect(() => {
+    if (!hasLoadedData) {
+      // Solo realiza la solicitud si los datos no se han cargado.
+      getUserPosts();
+    }
+  }, [hasLoadedData]);
 
   const contextValue = {
     data,
