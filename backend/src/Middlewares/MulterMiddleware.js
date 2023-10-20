@@ -9,7 +9,7 @@ export const uploadB2 = async (req, res, next) => {
 
         const b2 = new B2({
             applicationKeyId: process.env.KEY_ID,
-            applicationKey: process.env.APP_KEY
+            applicationKey: process.env.KEY
         })
     
         const authResponse = await b2.authorize()

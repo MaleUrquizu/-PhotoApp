@@ -8,7 +8,7 @@ export const verifyToken = async (req, res, next) => {
             return res.status(403).json({ message: "Unauthorized access" });
         }
 
-        const decoded = jwt.verify(token, config.SECRET);
+        const decoded = jwt.verify(token, process.env.SECRET);
         req.userId = decoded.id;
         console.log("Authenticated User:", req.userId);
 
