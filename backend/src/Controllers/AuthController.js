@@ -43,17 +43,17 @@ export const Register = async (req, res) => {
 
 export const Login = async (req, res) => {
 
-    const userFound = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email });
 
-    if (!userFound) return res.status(400).json({ message: "Incorrect email or password" })
+    if (!user) return res.status(400).json({ message: "Incorrect email or password" })
 
-    const matchPassword = await User.comparePassword(req.body.password, userFound.password)
+    const matchPassword = await User.comparePassword(req.body.password, user.password)
 
     if (!matchPassword) return res.status(401).json({ token: null, message: "Incorrect email or password" })
 
     // Only include user ID in the token payload
-    const payload = {
-        id: userFound._id
+    /*const payload = {
+        id: user._id
     };
 
     // Sign the token with the modified payload
@@ -62,7 +62,21 @@ export const Login = async (req, res) => {
     });
 
     // Respond with the token
-    res.json({ token });
+    res.json({ token });*/
+
+    const token = jwt.sign(
+        {
+          _id: user._id,
+          email: user.email,
+        },
+        process.env.SECRET
+      );
+  
+      res.header({
+        'x-access-token': token,
+      });
+  
+      res.json({ token });
 }
 
 // LOGOUT

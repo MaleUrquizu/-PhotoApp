@@ -22,17 +22,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-    roles: [
-        {
-            ref: "Role",
-            default: "user",
-            type: Schema.Types.ObjectId,
-        },
-    ],
+    date: {
+        type: Date,
+        default: Date.now
+    },
 }, {
     timestamps: true,
     versionKey: false,
-    collection: 'user', // Specify the collection name
+    collection: 'user', 
 });
 
 // Static method to encrypt a password

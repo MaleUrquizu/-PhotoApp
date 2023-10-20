@@ -40,27 +40,25 @@ export const getSinglePost = async (req, res) => {
 
 //CREATES A POST
 export const createPost = async (req, res) => {
-
-  const {caption} = req.body
-  const userId = req.user._id
+  const { caption } = req.body;
+  const userId = req.user._id;
 
   try {
+      const fileData = res.locals.data;
 
-    const fileData = res.locals.data;
+      const post = new Post({
+          image: fileData.url,
+          caption: caption,
+          postedBy: userId,
+          fileId: fileData.fileId,
+          fileName: fileData.fileOriginalName
+      });
 
-    const post = new Post({
-      image: fileData.url,
-      caption: caption,
-      postedBy: userId,
-      fileId: fileData.fileId,
-      fileName: fileData.fileOriginalName
-    })
+      await post.save();
 
-    await post.save()
-
-    res.status(200).json({ post });
+      res.status(200).json({ post });
   } catch (error) {
-      res.status(500).json({ error: error})
+      res.status(500).json({ error: error });
   }
 };
 
@@ -153,7 +151,7 @@ export const deletePost = async (req, res) => {
 };
 
 //GETS THE POSTS YOU HAVE POSTED
-export const getUserPosts = async (req,res)=> {
+/*export const getUserPosts = async (req,res)=> {
 
   
   try{
@@ -172,4 +170,22 @@ export const getUserPosts = async (req,res)=> {
   }  catch(err) {
         console.log(err)
     }
-}
+}*/
+
+export const getUserPosts = async (req, res) => {
+  try {
+    const userIdToken = req.user._id;
+
+    const userPosts = await Post.find({ postedBy: userIdToken });
+
+    if (userPosts.length === 0) {
+      return res.status(200).json({ message: "No posts yet" });
+    }
+
+    res.status(200).json({ Posts: userPosts });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "An error occurred" });
+  }
+};
+

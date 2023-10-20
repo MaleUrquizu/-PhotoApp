@@ -5,10 +5,10 @@ import { verifyToken } from "../Middlewares/AuthMiddleware.js"
 
 const router = express.Router()
 
+router.get('/myprofile', verifyToken, getUserPosts);
+
 router.get('/', getAllPosts);
 router.get('/:id', getSinglePost);
-
-router.get('/myprofile', verifyToken, getUserPosts);
 
 router.post('/upload', verifyToken, uploadMulter, uploadB2, createPost);
 
