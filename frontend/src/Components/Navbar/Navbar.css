@@ -1,8 +1,6 @@
 .navbar {
-    background-color: #6F42C1;
+  background: rgba(0, 0, 0, 0.493);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
@@ -29,12 +27,6 @@
     align-items: center;
   }
   
-  .navbar .logo span {
-    font-size: 32px;
-    color: #4169E1;
-    margin-right: 5px;
-    padding-top: 2px;
-  }
   
   .navbar .menu {
     display: none;
