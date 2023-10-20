@@ -131,7 +131,7 @@ export const deletePost = async (req, res) => {
     const b2 = new B2({
       accountId: process.env.ACCOUNT_KEY, 
       applicationKeyId: process.env.KEY_ID,
-      applicationKey: process.env.APP_KEY,
+      applicationKey: process.env.KEY,
     });
 
     await b2.authorize();
