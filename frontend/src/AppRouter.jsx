@@ -21,7 +21,7 @@ const AppRouter = () => {
             <Route path="/post/upload" element={ <CreatePost /> } />
             <Route path="/post/update/:id" element={ <UpdatePost /> } />
             <Route path="/post/delete/:id" element={ <DeletePost /> } />
-            <Route path="/profile" element={<User />} />
+            <Route path="/user" element={<User />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

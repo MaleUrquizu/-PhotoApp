@@ -116,7 +116,7 @@ function ApiProvider({ children }) {
       console.log(updatedPost)
 
       try {
-        setData(prevData => [...prevData, updatedPost])
+        setData([...data, updatedPost]);
 
         console.log(updatedPost)
 
@@ -132,7 +132,7 @@ function ApiProvider({ children }) {
       console.error(error);
     }
   };
-
+  
 //UPDATES A POST IMAGE
 const imageUpdate = async (postId, updatedImage) => {
   try {
@@ -146,7 +146,7 @@ const imageUpdate = async (postId, updatedImage) => {
     } catch (error) {
       console.log(error)
     }
-    alert('Post updated successfully');
+    alert('Image updated successfully');
     
     console.log(data)
   } catch (error) {
@@ -154,6 +154,7 @@ const imageUpdate = async (postId, updatedImage) => {
     console.error(error);
   }
 }
+
 
    //DELETES POST
    const deletePost = async (postId) => {

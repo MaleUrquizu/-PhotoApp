@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useApi } from '../../Context/ApiProvider'
+import { useApi } from '../../Context/ApiProvider';
 import { useAuth } from '../../Context/AuthContext'
 import { FaPlus } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
@@ -8,7 +8,7 @@ function CreatePost() {
     const [image, setImage] = useState(null)
     const [ caption, setCaption] = useState('')
     const [imagePreview, setImagePreview] = useState(null);
-    const { createPost } = useApi()
+    const { createPost, getUserPosts } = useApi();
     const { findToken } = useAuth()
     const navigate = useNavigate()
 
@@ -32,24 +32,24 @@ function CreatePost() {
           setImagePreview(null);
         }
       };
-    
+      
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          
           const formData = new FormData();
           formData.append('image', image);
           formData.append('caption', caption);
-    
-         
           await createPost(formData);
-          if(createPost){
-            navigate('/')
-          }
+      
+          // Redirecciona a la página de usuario y recarga la página.
+          navigate('/user', { replace: true });
+          window.location.reload();
         } catch (error) {
           console.error('Error creating post:', error);
         }
       };
+      
+      
 
   return (
     <div className='text-pink h-100vh'>

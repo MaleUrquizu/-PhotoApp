@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import '../Navbar/Navbar.css'
+import '../Navbar/Navbar.css';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [token, setToken] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
-  }, [token]);
+  }, []);
 
   const handleMenuToggle = () => {
     setOpen(!open);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setToken(null); // Actualiza el estado token a null
+    navigate('/');
   };
 
   return (
@@ -37,12 +44,12 @@ function Navbar() {
           )}
           {token && (
             <li>
-              <Link to={'/profile'}>Profile</Link>
+              <Link to={'/user'}>Profile</Link>
             </li>
           )}
           {token ? (
             <li>
-              <Link to={'/'} onClick={() => {localStorage.removeItem('token'); window.location.reload();}}>Logout</Link>
+              <button onClick={handleLogout}>Logout</button>
             </li>
           ) : (
             <li>
@@ -56,3 +63,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

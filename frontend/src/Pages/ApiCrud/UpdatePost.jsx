@@ -57,11 +57,10 @@ function UpdatePost() {
       formData.append('image', image);
 
       await imageUpdate(id, formData)
-
-     
       await updatePost(id, caption);
 
-      navigate('/')
+      navigate('/user', { replace: true });
+      window.location.reload();
     } catch (error) {
       console.error('Error creating post:', error);
     }
@@ -74,12 +73,12 @@ function UpdatePost() {
       <h2 className='text-2xl text-bold text-center mt-10'>Edit your post 🤯!</h2>
       <form onSubmit={handleSubmit}>
         <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10 lg:gap-5 flex items-center md:mx-40 md:mt-40 xs:mx-10 justify-items-center '>
-        {imagePreview ?
-              <>
-                <label className='labelFile hover:grayscale-100' htmlFor="image">
-                  <img className='hover:blur' src={imagePreview} alt="" />
-                </label>
-                <input 
+          {imagePreview ?
+            <>
+              <label className='labelFile hover:grayscale-100' htmlFor="image">
+                <img className='hover:blur' src={imagePreview} alt="" />
+              </label>
+              <input
                 type="file"
                 id="image"
                 name="image"
@@ -87,13 +86,13 @@ function UpdatePost() {
                 onChange={handleImageChange}
                 hidden
               />
-              </>
-                :
-                <>
-            <label className='labelFile' htmlFor="image">
-              <img src={data.image} alt="" />
-            </label>
-              <input 
+            </>
+            :
+            <>
+              <label className='labelFile' htmlFor="image">
+                <img src={data.image} alt="" />
+              </label>
+              <input
                 type="file"
                 id="image"
                 name="image"
@@ -101,10 +100,10 @@ function UpdatePost() {
                 onChange={handleImageChange}
                 hidden
               />
-              </>
-            
-            
-            }
+            </>
+
+
+          }
 
 
           <div className='flex-auto w-full mb-1 text-xs space-y-2'>

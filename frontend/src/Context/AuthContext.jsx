@@ -38,7 +38,7 @@ function AuthProvider({ children }) {
                 localStorage.setItem("token", data.token);
                 console.log(data);
                 console.log('Logged in!');
-                navigate('/profile'); 
+                navigate('/user'); 
             })
             .catch((error) => {
                 console.log('Login failed:', error);
