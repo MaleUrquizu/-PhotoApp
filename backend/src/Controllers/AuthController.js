@@ -51,19 +51,6 @@ export const Login = async (req, res) => {
 
     if (!matchPassword) return res.status(401).json({ token: null, message: "Incorrect email or password" })
 
-    // Only include user ID in the token payload
-    /*const payload = {
-        id: user._id
-    };
-
-    // Sign the token with the modified payload
-    const token = jwt.sign(payload, process.env.SECRET, {
-        expiresIn: 86400
-    });
-
-    // Respond with the token
-    res.json({ token });*/
-
     const token = jwt.sign(
         {
           _id: user._id,

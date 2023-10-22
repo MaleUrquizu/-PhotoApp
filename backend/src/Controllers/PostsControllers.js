@@ -150,28 +150,6 @@ export const deletePost = async (req, res) => {
   }
 };
 
-//GETS THE POSTS YOU HAVE POSTED
-/*export const getUserPosts = async (req,res)=> {
-
-  
-  try{
-
-    const userIdToken =  req.user._id;
-
-    const postedBy = Post.find({ postedBy: userIdToken })
-
-    const userPosts = await postedBy;
-
-    if (userPosts.length === 0) {
-      return res.status(200).json({ message: "No posts yet" });
-    }
-
-    res.status(200).json({ Posts: userPosts })
-  }  catch(err) {
-        console.log(err)
-    }
-}*/
-
 export const getUserPosts = async (req, res) => {
   try {
     const userIdToken = req.user._id;
