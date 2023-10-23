@@ -21,16 +21,16 @@ Here are some screenshots of PhotoApp:
 <img src="https://i.postimg.cc/2yJzDJjW/home.png" width="300" alt="Home Page">
 
 <!-- Second Screenshot -->
-<img src="https://i.postimg.cc/z3K11Gcm/gallery.png" width="300" alt="Gallery Page">
+<img src="https://i.postimg.cc/6616n7VQ/gallery.png" width="300" alt="Gallery Page">
 
 <!-- Third Screenshot -->
-<img src="https://i.postimg.cc/xNDDbwqF/login.png" width="300" alt="Login Page">
+<img src="https://i.postimg.cc/Kj4ZCFbF/login.png" width="300" alt="Login Page">
 
 <!-- Fourth Screenshot -->
-<img src="https://i.postimg.cc/34DQN8rv/user.png" width="300" alt="User Page">
+<img src="https://i.postimg.cc/G2XLMtZq/user.png" width="300" alt="User Page">
 
 <!-- Fifth Screenshot -->
-<img src="https://i.postimg.cc/QBzrj9DD/edit.png" width="300" alt="Edit Page">
+<img src="https://i.postimg.cc/mDLZNC6P/edit.png" width="300" alt="Edit Page">
 
 ## Prerequisites
 
