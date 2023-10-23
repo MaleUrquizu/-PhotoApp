@@ -44,7 +44,7 @@ function Login() {
 
   return (
     <div className='container-login'>
-      <section>
+      <section className='section'>
         <h1>Login</h1>
         <div className='box-registration'>
           <form onSubmit={handleSubmit}>
@@ -58,7 +58,7 @@ function Login() {
               value={email}
               required
             />
-
+  
             <label htmlFor='password'>Password</label>
             <input
               type='password'
@@ -72,11 +72,12 @@ function Login() {
               Login
             </button>
           </form>
+          <Link className='text-purple' to={'/register'}>Register</Link>
         </div>
       </section>
-      <Link className='text-purple' to={'/register'}>In case you don't have an account</Link>
     </div>
   );
+  
 }
 
 export default Login;

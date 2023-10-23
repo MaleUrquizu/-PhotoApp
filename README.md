@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# PhotoApp - Project Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the documentation of PhotoApp, an exciting web application that allows you to view user photos, create, edit, and delete your own posts. Here you will find important information on how to install and use PhotoApp, as well as the components and technologies that make this application possible.
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+PhotoApp is a web application designed for sharing images and special moments. Its key features include:
 
-### `npm start`
+- Viewing user photos.
+- Creating, editing, and deleting your own posts.
+- Cloud-based image storage using Backblaze B2.
+- Data storage using MongoDB Atlas.
+- Frontend developed in React.
+- Backend built with Node and Express.js.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Make sure you have the following prerequisites before getting started:
 
-### `npm test`
+- **Node.js**: Ensure you have Node.js installed. You can download it from [nodejs.org](https://nodejs.org).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+Follow these steps to set up and run PhotoApp on your local machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/MaleUrquizu/-PhotoApp.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ``Backend``
+- In the project's root folder, run: 
+   ```bash
+      npm install
 
-### `npm run eject`
+- Then, start the server: 
+   ```bash
+      nodemon
+      
+Make sure it's connected to the MongoDB database.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ``Frontend``
+- In the "client" folder of the project, run: 
+   ```bash
+      npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Next, start the frontend application: 
+   ```bash
+      npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This will open your browser and allow you to view the web application.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ``Running Tests``
+- If you want to run tests on the backend, use the following command:
+   ```bash
+      npx jest --config jest.config.cjs
 
-## Learn More
+This will automatically run the tests.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ``Project Development``
+To develop this project, technologies were chosen to provide comfort while presenting a challenge. Here is an overview of the key choices:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Frontend: 
+React was the choice for frontend development. An architecture based on Atomic Design principles was followed for an organized environment. React features, including hooks, were extensively used.
+### Backend: 
+ Express.js was used for the backend. A Model-View-Controller (MVC) architecture was implemented for an organized and efficient structure.
+### Image Storage: 
+For image uploading, Multer was used, and integration with the Backblaze B2 cloud storage service was done to improve performance and scalability.
+### Database: 
+MongoDB Compass was used as the database to store project data.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for choosing PhotoApp. We hope you enjoy sharing your photos and special moments with this web application!

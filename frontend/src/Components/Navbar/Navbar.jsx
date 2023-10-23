@@ -26,7 +26,7 @@ function Navbar() {
     <div className={`navbar ${open ? 'open' : ''}`}>
       <div className='logo'>
         <Link to={'/'}>
-          PhotoApp🌻
+        🌱PhotoApp
         </Link>
       </div>
       <div className='menu-icon' onClick={handleMenuToggle}>
@@ -49,7 +49,7 @@ function Navbar() {
           )}
           {token ? (
             <li>
-              <button onClick={handleLogout}>Logout</button>
+                <button className="menu-button" onClick={handleLogout}>Logout</button>
             </li>
           ) : (
             <li>

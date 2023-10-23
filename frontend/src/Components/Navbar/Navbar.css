@@ -1,72 +1,92 @@
 .navbar {
-  background: rgba(0, 0, 0, 0.493);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    top: 0;
-    left: 0;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #FFF;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .navbar a:hover {
-    color: #FF69B4;
-    transition: color 0.5s;
-  }
-  
-  .navbar .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  
-  .navbar .menu {
-    display: none;
-  }
-  
-  .navbar .menu-icon {
-    font-size: 32px;
-    cursor: pointer;
-  }
-  
-  .navbar.open .menu {
-    display: block;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #6F42C1;
-    transition: top 0.5s;
-  }
-  
-  .navbar .menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar .menu li {
-    margin-left: 20px;
-  }
-  
-  .navbar .menu a {
-    text-decoration: none;
-    color: #FFF;
-    font-size: 16px;
-  }
-  
-  .navbar .menu a:hover {
-    color: #FF69B4;
-    transition: color 0.5s;
-  }
-  
+  background: rgba(39, 38, 38, 0.888);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  color: white;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #84c71f;
+  transition: color 0.5s;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar .menu {
+  display: none;
+}
+
+.navbar .menu-icon {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.navbar.open .menu {
+  display: block;
+  position: absolute;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: rgba(39, 38, 38, 0.397);
+  transition: top 0.5s;
+}
+
+.navbar .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbar .menu li {
+  margin-right: 20px;
+}
+
+.navbar .menu a {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 16px;
+}
+
+.navbar .menu a:hover {
+  color: #84c71f;
+  transition: color 0.5s;
+}
+
+.menu-button {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.menu-button:hover {
+  color: #84c71f;
+  transition: color 0.5s;
+}
