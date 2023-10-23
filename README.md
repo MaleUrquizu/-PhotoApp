@@ -18,19 +18,19 @@ PhotoApp is a web application designed for sharing images and special moments. I
 Here are some screenshots of PhotoApp:
 
 <!-- First Screenshot -->
-<img src="https://i.postimg.cc/2yJzDJjW/home.png" width="300" alt="Home Page">
+<img src="https://i.postimg.cc/2yJzDJjW/home.png" width="500" alt="Home Page">
 
 <!-- Second Screenshot -->
-<img src="https://i.postimg.cc/6616n7VQ/gallery.png" width="300" alt="Gallery Page">
+<img src="https://i.postimg.cc/6616n7VQ/gallery.png" width="500" alt="Gallery Page">
 
 <!-- Third Screenshot -->
-<img src="https://i.postimg.cc/Kj4ZCFbF/login.png" width="300" alt="Login Page">
+<img src="https://i.postimg.cc/Kj4ZCFbF/login.png" width="500" alt="Login Page">
 
 <!-- Fourth Screenshot -->
-<img src="https://i.postimg.cc/G2XLMtZq/user.png" width="300" alt="User Page">
+<img src="https://i.postimg.cc/G2XLMtZq/user.png" width="500" alt="User Page">
 
 <!-- Fifth Screenshot -->
-<img src="https://i.postimg.cc/mDLZNC6P/edit.png" width="300" alt="Edit Page">
+<img src="https://i.postimg.cc/mDLZNC6P/edit.png" width="500" alt="Edit Page">
 
 ## Prerequisites
 
