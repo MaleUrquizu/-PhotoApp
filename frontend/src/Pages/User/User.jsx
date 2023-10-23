@@ -8,9 +8,13 @@ import '../User/User.css';
 function User() {
   const { data, getUserPosts } = useApi();
 
+  /*useEffect(() => {
+    getUserPosts();
+  }, []);*/
   useEffect(() => {
     getUserPosts();
-  }, []);
+}, [getUserPosts]);
+
 
   if (!data || !data.length) { // Comprueba si data es nulo o su longitud es cero
     return (
