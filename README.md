@@ -2,11 +2,12 @@
 
 Welcome to the documentation of PhotoApp, an exciting web application that allows you to view user photos, create, edit, and delete your own posts. Here you will find important information on how to install and use PhotoApp, as well as the components and technologies that make this application possible.
 
-[![home.png](https://i.postimg.cc/2yJzDJjW/home.png)](https://postimg.cc/4H6CvW94)
-[gallery.png](https://postimg.cc/z3K11Gcm)
-[login.png](https://postimg.cc/xNDDbwqF)
-[user.png](https://postimg.cc/34DQN8rv)
-[edit.png](https://postimg.cc/QBzrj9DD)
+- [![home.png](https://i.postimg.cc/2yJzDJjW/home.png)](https://postimg.cc/4H6CvW94)
+- [![gallery.png](https://i.postimg.cc/2yJzDJjW/gallery.png)](https://postimg.cc/4H6CvW94)
+- [![login.png](https://i.postimg.cc/2yJzDJjW/login.png)](https://postimg.cc/4H6CvW94)
+- [![user.png](https://i.postimg.cc/2yJzDJjW/user.png)](https://postimg.cc/4H6CvW94)
+- [![edit.png](https://i.postimg.cc/2yJzDJjW/edit.png)](https://postimg.cc/4H6CvW94)
+
 
 ## Project Description
 
