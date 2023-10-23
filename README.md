@@ -2,6 +2,8 @@
 
 Welcome to the documentation of PhotoApp, an exciting web application that allows you to view user photos, create, edit, and delete your own posts. Here you will find important information on how to install and use PhotoApp, as well as the components and technologies that make this application possible.
 
+[![home.png](https://i.postimg.cc/2yJzDJjW/home.png)](https://postimg.cc/4H6CvW94)
+
 ## Project Description
 
 PhotoApp is a web application designed for sharing images and special moments. Its key features include:
