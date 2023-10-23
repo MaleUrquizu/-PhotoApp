@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
-
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/post',
@@ -36,20 +35,20 @@ function ApiProvider({ children }) {
   const [posts, setPosts] = useState([]);
 
   //GETS ALL POSTS
-  const getAllPosts = async () => {
-    setIsLoading(true); 
+  const getAllPosts = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await axios.get('http://localhost:8000/post');
-      console.log(response);
       setData(response.data);
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
-  };
+  }, []);
 
-  const getUserPosts = async () => {
+  //GET USER POSTS
+  const getUserPosts = useCallback(async () => {
     if (hasLoadedData) {
       return;
     }
@@ -57,16 +56,14 @@ function ApiProvider({ children }) {
     setIsLoading(true);
     try {
       const response = await axiosInstance.get('http://localhost:8000/post/myprofile');
-      console.log(response);
       setData(response.data.Posts);
-      setHasLoadedData(true); 
-
+      setHasLoadedData(true);
     } catch (error) {
       console.log(error);
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [hasLoadedData]);
 
   //GESTS A POST
   const getAPost = async (userId) => {
@@ -151,18 +148,18 @@ function ApiProvider({ children }) {
       console.error('Error deleting post:', error);
     }
   };
+  
   useEffect(() => {
-    if (data && data.length === 0 && !isLoading) {
+    if (data.length === 0 && !isLoading) {
       getAllPosts();
     }
-  }, [data, isLoading]);
-
+  }, [data, isLoading, getAllPosts]);
 
   useEffect(() => {
     if (!hasLoadedData) {
       getUserPosts();
     }
-  }, [hasLoadedData]);
+  }, [hasLoadedData, getUserPosts]);
 
   const contextValue = {
     data,
