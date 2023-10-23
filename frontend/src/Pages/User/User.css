@@ -3,7 +3,7 @@
   margin: 0 3px;
   padding-top: 5px;
   gap: 1px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .container img {

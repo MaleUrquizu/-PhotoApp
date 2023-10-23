@@ -3,113 +3,107 @@ import { useApi } from '../../Context/ApiProvider';
 import { useAuth } from '../../Context/AuthContext'
 import { FaPlus } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import '../ApiCrud/ApiCrud.css'
 
 function CreatePost() {
-    const [image, setImage] = useState(null)
-    const [ caption, setCaption] = useState('')
-    const [imagePreview, setImagePreview] = useState(null);
-    const { createPost, getUserPosts } = useApi();
-    const { findToken } = useAuth()
-    const navigate = useNavigate()
+  const [image, setImage] = useState(null)
+  const [caption, setCaption] = useState('')
+  const [imagePreview, setImagePreview] = useState(null);
+  const { createPost } = useApi();
+  const { findToken } = useAuth()
+  const navigate = useNavigate()
 
-    findToken()
+  findToken()
 
-    const handleInputChange = (e) => {
-        setCaption(e.target.value)
-      };
-    
-      const handleImageChange = (e) => {
-        const selectedImage = e.target.files[0];
-        setImage(selectedImage);
+  const handleInputChange = (e) => {
+    setCaption(e.target.value)
+  };
 
-        if (selectedImage) {
-          const reader = new FileReader();
-          reader.onload = (event) => {
-            setImagePreview(event.target.result);
-          };
-          reader.readAsDataURL(selectedImage);
-        } else {
-          setImagePreview(null);
-        }
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage);
+
+    if (selectedImage) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImagePreview(event.target.result);
       };
-      
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          const formData = new FormData();
-          formData.append('image', image);
-          formData.append('caption', caption);
-          await createPost(formData);
-      
-          // Redirecciona a la página de usuario y recarga la página.
-          navigate('/user', { replace: true });
-          window.location.reload();
-        } catch (error) {
-          console.error('Error creating post:', error);
-        }
-      };
-      
-      
+      reader.readAsDataURL(selectedImage);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('image', image);
+      formData.append('caption', caption);
+      await createPost(formData);
+      navigate('/user', { replace: true });
+      window.location.reload();
+    } catch (error) {
+      console.error('Error creating post:', error);
+    }
+  };
+
+
 
   return (
-    <div className='text-pink h-100vh'>
-      <h2 className='text-2xl text-bold text-center mt-10'>Dump in a new pic 😜!</h2>
+    <div className='container-create'>
+      <h2 className='title-create'>Dump in a new pic!</h2>
       <div>
 
-      <form   onSubmit={handleSubmit}>
-        <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10 lg:gap-5 flex items-center md:mx-40 md:mt-40 xs:mx-10 justify-items-center '>
+        <form onSubmit={handleSubmit}>
+          <div className='container2-create'>
             <div>
 
               {imagePreview ?
-              <>
-                <label className='labelFile hover:grayscale-100' htmlFor="image">
-                  <img className='hover:blur' src={imagePreview} alt="" />
-                </label>
-                <input 
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-                hidden
-              />
-              </>
+                <>
+                  <label htmlFor="image">
+                    <img className='image-create' src={imagePreview} alt="" />
+                  </label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    hidden
+                  />
+                </>
                 :
                 <>
-            <label className='labelFile' htmlFor="image"><FaPlus /></label>
-              <input 
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-                hidden
-              />
-              </>
-            
-            
-            }
-
-
+                  <label className='labelFile' htmlFor="image"><FaPlus /></label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    hidden
+                  />
+                </>
+              }
             </div>
-
-            <div className='flex-auto w-full mb-1 text-xs space-y-2'>
-              <label className='font-semibold' htmlFor="caption">Caption:</label>
+            <div className='name-create'>
+              <label htmlFor="caption">Caption:</label>
               <div>
-              <textarea className='text-purple h-28 w-full apperance-none block bg-dark-blue text-gray-600 rounded-lg border-2 border-purple py-4 px-3 focus:outline-none'
-                type="text"
-                id="caption"
-                name="caption"
-                value={caption}
-                onChange={handleInputChange}
-              />
+                <textarea
+                  type="text"
+                  id="caption"
+                  name="caption"
+                  value={caption}
+                  onChange={handleInputChange}
+                />
               </div>
-            </div>
-        </div>
-        <div className='flex items-center justify-center'>
-        <button className='rounded-full mt-3 pl-5 pr-5 border' type="submit">Create Post</button>
-        </div>
-      </form>
+            </div> 
+            <div>
+            <button className='button-create' type="submit">Create Post</button>
+          </div>
+          </div>
+        </form>
       </div>
     </div>
   )

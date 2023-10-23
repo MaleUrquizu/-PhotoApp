@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useApi } from '../../Context/ApiProvider'
 import { useAuth } from '../../Context/AuthContext'
 import { useNavigate, useParams } from 'react-router-dom'
-import '../../App.css'
+import '../ApiCrud/ApiCrud.css'
 
 function UpdatePost() {
   const [image, setImage] = useState(null)
@@ -46,7 +46,6 @@ function UpdatePost() {
     } else {
       setImagePreview(null);
     }
-
   };
 
 
@@ -66,17 +65,15 @@ function UpdatePost() {
     }
   };
 
-
-
   return (
-    <div className='text-pink h-100vh'>
-      <h2 className='text-2xl text-bold text-center mt-10'>Edit your post 🤯!</h2>
+    <div className='container-updatepost'>
+      <h2 className='title'>Edit your post</h2>
       <form onSubmit={handleSubmit}>
-        <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10 lg:gap-5 flex items-center md:mx-40 md:mt-40 xs:mx-10 justify-items-center '>
+        <div className='container2-updatepost'>
           {imagePreview ?
             <>
-              <label className='labelFile hover:grayscale-100' htmlFor="image">
-                <img className='hover:blur' src={imagePreview} alt="" />
+              <label htmlFor="image">
+                <img className='img-updatepost' src={imagePreview} alt="" />
               </label>
               <input
                 type="file"
@@ -101,14 +98,10 @@ function UpdatePost() {
                 hidden
               />
             </>
-
-
           }
-
-
-          <div className='flex-auto w-full mb-1 text-xs space-y-2'>
+          <div className='caption-updatepost'>
             <label className='font-semibold' htmlFor="caption">Caption:</label>
-            <textarea className='text-purple h-28 w-full apperance-none block bg-dark-blue text-gray-600 rounded-lg border-2 border-purple py-4 px-3 focus:outline-none'
+            <textarea
               type="text"
               id="caption"
               name="caption"
@@ -116,13 +109,10 @@ function UpdatePost() {
               onChange={handleInputChange}
             />
           </div>
-
+          <div>
+            <button className='button-updatepost' type="submit">Update Post</button>
+          </div>
         </div>
-
-        <div className='flex items-center justify-center'>
-          <button className='rounded-full mt-3 pl-5 pr-5 border' type="submit">Update Post</button>
-        </div>
-
       </form>
     </div>
   )

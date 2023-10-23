@@ -1,0 +1,106 @@
+/*******CREATE-POST*******/
+.container-create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container2-create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.labelFile {
+    cursor: pointer;
+}
+
+.button-create {
+    background-color: #84c71f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/*******SINGLE-POST*******/
+.container-siglepost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.icons-siglepost {
+    display: flex;
+    gap: 60px;
+}
+
+.container2-siglepost {
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*******UPDATE-POST*******/
+.container-updatepost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container2-updatepost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-height: 300px;
+}
+
+.button-updatepost {
+    background-color: #84c71f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/*******SHOW-POST*******/
+.gallery-title {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.showposts-container {
+    display: grid;
+    margin: 0 3px;
+    padding-top: 5px;
+    min-width: 100vh;
+    gap: 1px;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+}
+
+  
+  
+  
+  

@@ -15,7 +15,7 @@ const REGISTER_URL = 'http://localhost:8000/auth';
 function AuthProvider({ children }) {
     const [userLogin, setUserLogin] = useState(null);
 
-    const [ user, setUser ] = useState({
+    const [user, setUser] = useState({
         email: "",
         password: ""
     })
@@ -30,7 +30,7 @@ function AuthProvider({ children }) {
             },
             body: JSON.stringify(userData),
         };
-    
+
         fetch(LOGIN_URL, options)
             .then((res) => res.json())
             .then((data) => {
@@ -38,47 +38,37 @@ function AuthProvider({ children }) {
                 localStorage.setItem("token", data.token);
                 console.log(data);
                 console.log('Logged in!');
-                navigate('/user'); 
+                navigate('/user');
             })
             .catch((error) => {
                 console.log('Login failed:', error);
             });
     }
-    
 
     const register = (data) => {
-
         const options = {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         };
-
         try {
-            
             fetch(REGISTER_URL, options)
-            .then(res => res.json())
-            .then(data => console.log(data))
-
-            console.log('listo!')
-
+                .then(res => res.json())
+                .then(data => console.log(data))
         } catch {
             console.log('no funciona')
         }
     }
 
     const token = localStorage.getItem('token')
-    
+
     const findToken = () => {
-
-
-        if(!token  || token === null){
+        if (!token || token === null) {
             navigate("/login")
         }
     }
-
 
     return (
         <AuthContext.Provider value={{ login, userLogin, register, user, setUser, findToken, token }}>

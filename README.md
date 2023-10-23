@@ -13,6 +13,25 @@ PhotoApp is a web application designed for sharing images and special moments. I
 - Frontend developed in React.
 - Backend built with Node and Express.js.
 
+## Screenshots
+
+Here are some screenshots of PhotoApp:
+
+<!-- First Screenshot -->
+<img src="https://i.postimg.cc/2yJzDJjW/home.png" width="300" alt="Home Page">
+
+<!-- Second Screenshot -->
+<img src="https://i.postimg.cc/z3K11Gcm/gallery.png" width="300" alt="Gallery Page">
+
+<!-- Third Screenshot -->
+<img src="https://i.postimg.cc/xNDDbwqF/login.png" width="300" alt="Login Page">
+
+<!-- Fourth Screenshot -->
+<img src="https://i.postimg.cc/34DQN8rv/user.png" width="300" alt="User Page">
+
+<!-- Fifth Screenshot -->
+<img src="https://i.postimg.cc/QBzrj9DD/edit.png" width="300" alt="Edit Page">
+
 ## Prerequisites
 
 Make sure you have the following prerequisites before getting started:

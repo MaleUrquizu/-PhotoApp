@@ -9,9 +9,9 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
     if (token) {
-      config.headers['x-access-token'] = token; 
+      config.headers['x-access-token'] = token;
     }
     return config;
   },
@@ -20,11 +20,6 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-
-
-/*const CREATE_POST_URL = 'upload'
-const UPDATE_POST_URL = 'update'
-const UPDATE_IMAGE_POST_URL = 'image/update'*/
 const DELETE_POST_URL = 'delete'
 
 const ApiContext = createContext()
@@ -36,13 +31,13 @@ export function useApi() {
 function ApiProvider({ children }) {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState()
-  const [hasLoadedData, setHasLoadedData] = useState(false); 
+  const [hasLoadedData, setHasLoadedData] = useState(false);
 
   const [posts, setPosts] = useState([]);
 
-   //GETS ALL POSTS
+  //GETS ALL POSTS
   const getAllPosts = async () => {
-    setIsLoading(true); // Establecer isLoading en true al comenzar la solicitud
+    setIsLoading(true); 
     try {
       const response = await axios.get('http://localhost:8000/post');
       console.log(response);
@@ -50,13 +45,12 @@ function ApiProvider({ children }) {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false); // Establecer isLoading en false cuando se completa la solicitud
+      setIsLoading(false); 
     }
   };
 
   const getUserPosts = async () => {
     if (hasLoadedData) {
-      // Si los datos ya se han cargado, no realices la solicitud nuevamente.
       return;
     }
 
@@ -65,7 +59,7 @@ function ApiProvider({ children }) {
       const response = await axiosInstance.get('http://localhost:8000/post/myprofile');
       console.log(response);
       setData(response.data.Posts);
-      setHasLoadedData(true); // Marca los datos como cargados
+      setHasLoadedData(true); 
 
     } catch (error) {
       console.log(error);
@@ -74,90 +68,78 @@ function ApiProvider({ children }) {
     }
   }
 
-
-   //GESTS A POST
+  //GESTS A POST
   const getAPost = async (userId) => {
     try {
       const response = await axios.get(`http://localhost:8000/post/${userId}`)
       setData(response.data)
     } catch (error) {
       console.log(error)
-    } finally{
+    } finally {
       setIsLoading(false)
     }
   }
 
-   //CREATES POST
+  //CREATES POST
   const createPost = async (newPost) => {
     try {
-    
-    const response = await axiosInstance.post(`http://localhost:8000/post/upload`, newPost)
+      const response = await axiosInstance.post(`http://localhost:8000/post/upload`, newPost)
+      console.log(response.data)
+      if (response) {
+        const createdPost = response.data
+        setData([...data, createdPost])
 
-    console.log(response.data)
-    if(response){
-      const createdPost = response.data
-      setData([...data, createdPost])
-
-      alert('Post created successfully');
-    }
-
+        alert('Post created successfully');
+      }
     } catch (error) {
       alert('There has been an error uploading the caption')
       console.log(error)
     }
   }
 
-   //UPDATES POST
+  //UPDATES POST
   const updatePost = async (postId, updatedCaption) => {
     try {
-      const response = await axiosInstance.put(`http://localhost:8000/post/update/${postId}`, {caption: updatedCaption} )
-      
+      const response = await axiosInstance.put(`http://localhost:8000/post/update/${postId}`, { caption: updatedCaption })
       const updatedPost = await response.data;
       console.log(updatedPost)
-
       try {
         setData([...data, updatedPost]);
-
         console.log(updatedPost)
 
       } catch (error) {
         console.log(error)
       }
-
       alert('Post updated successfully');
-      
       console.log(data)
     } catch (error) {
       alert('You are not authorized to update a post you didnt upload')
       console.error(error);
     }
   };
-  
-//UPDATES A POST IMAGE
-const imageUpdate = async (postId, updatedImage) => {
-  try {
-    const response = await axiosInstance.put(`http://localhost:8000/post/image/update/${postId}`, updatedImage )
-    
-    const updatedPostImage = await response.data;
 
+  //UPDATES A POST IMAGE
+  const imageUpdate = async (postId, updatedImage) => {
     try {
-      setData(...data, updatedPostImage)
-      console.log(updatedPostImage)
+      const response = await axiosInstance.put(`http://localhost:8000/post/image/update/${postId}`, updatedImage)
+      const updatedPostImage = await response.data;
+      try {
+        setData(...data, updatedPostImage)
+        console.log(updatedPostImage)
+      } catch (error) {
+        console.log(error)
+      }
+      alert('Image updated successfully');
+      console.log(data)
+
     } catch (error) {
-      console.log(error)
+      alert('You are not authorized to update a post you didnt upload')
+      console.error(error);
     }
-    alert('Image updated successfully');
-    
-    console.log(data)
-  } catch (error) {
-    alert('You are not authorized to update a post you didnt upload')
-    console.error(error);
   }
-}
 
-
-   //DELETES POST
-   const deletePost = async (postId) => {
+  //DELETES POST
+  const deletePost = async (postId) => {
     try {
       const response = await axiosInstance.delete(`http://localhost:8000/post/${DELETE_POST_URL}/${postId}`)
 
@@ -170,16 +152,14 @@ const imageUpdate = async (postId, updatedImage) => {
     }
   };
   useEffect(() => {
-    // Verificar si data está definida, no está vacía y no está en proceso de carga
     if (data && data.length === 0 && !isLoading) {
       getAllPosts();
     }
   }, [data, isLoading]);
-  
-  
+
+
   useEffect(() => {
     if (!hasLoadedData) {
-      // Solo realiza la solicitud si los datos no se han cargado.
       getUserPosts();
     }
   }, [hasLoadedData]);
